@@ -15,7 +15,7 @@ class LoginController extends Controller
         // die($url);  
 
         try {
-            $response = $http->post($url,  [
+            $response = $http->post($url,  [ 
                 'form_params' => [
                     'grant_type' => config('app.grant_type'),
                     'client_id' => config('app.client_id'),
