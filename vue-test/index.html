@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Component Practice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="root" class="mt-5">
+        <tabs>
+            <tab name="About us" :selected="true">
+                <h1>This is Us and it is our description</h1>
+            </tab>
+            <tab name="About Our Culture">
+                <h1>This is Us and it is our culture.</h1>
+            </tab>
+            <tab name="About our vision">
+                <h1>This is Us and it is our vision.</h1>
+            </tab>
+            <tab name="About our docs">
+                <h1>This is Us and it is our documentation.</h1>
+            </tab>
+        </tabs>
+
+
+        <!-- <button @click="toggleColor" title="i am button.">Save</button> -->
+
+
+        <!-- <task v-if="showTask1" title="this is my fault" body="Hermonie Granger-Weasley" @close="showTask1=false">Hello
+            Sweetie</task>
+        <task v-if="showTask2" title="Harry Potter" body="Jinny Weasley" @close="showTask2=false">Hello Sweetie</task>
+        <button @click="visibleTask">Show task</button> -->
+
+
+
+
+        <!-- for episode of data-binding 
+        <div :title="title" height="40px" width="100px" :class="{ red:isRed}">
+            kuch bhi
+        </div> -->
+
+
+        <!-- for episode computed properties.
+        <ul>
+            <h1>Completed Task</h1>
+            <li v-for="task in completed">{{ task.title }}</li>
+        </ul>
+        <ul>
+            <h1>Incompleted Task</h1>
+            <li v-for="task in incompleted">{{ task.title }}</li>
+        </ul> -->
+
+
+        <!-- episode two and three four -->
+        <!-- <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul> -->
+
+    </div>
+
+    <script src="scripts/vue.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#root',
+
+        });
+    </script>
+
+</body>
+
+</html>

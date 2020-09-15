@@ -16,17 +16,20 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'alex roger', 
             'email' => 'alex@e.i',
-            'password' => Hash::make('password1'),
+            'phone_no' => '7777777777',
+            // 'password' => Hash::make('password1'),
         ]);
         DB::table('users')->insert([
             'name' => 'martina higgins', 
             'email' => 'amrtina@e.i',
-            'password' => Hash::make('password2'),
+            'phone_no' => '8888888888',
+            // 'password' => Hash::make('password2'),
         ]);
         DB::table('users')->insert([
             'name' => 'golum vinci', 
             'email' => 'golun@e.i',
-            'password' => Hash::make('password3'),
+            'phone_no' => '9999999999',
+            // 'password' => Hash::make('password3'),
         ]);
     }
 }

@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', 'Api\LoginController@login')->name('api.login');
+Route::post('/otp-login', 'Api\LoginController@otp_login')->name('api.login');
+Route::post('/generate-otp', 'Api\LoginController@generate_otp')->name('api.generate_otp');
+
 
 Route::middleware('auth:api')->group(function(){
     Route::apiResource('books', 'Api\BooksController');

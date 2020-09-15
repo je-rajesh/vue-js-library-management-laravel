@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <title>WELCOME AND SIGN UP FORM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="root" class="row justify-content-center">
+
+        <tabs>
+            <login-tab></login-tab>
+            <signup-tab :selected="true"></signup-tab>
+        </tabs>
+
+    </div>
+
+
+    <script src="scripts/vue.js"></script>
+    <script>
+        Vue.component('tabs', {
+            template: `
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills">
+                        <li v-for="tab in tabs" @click="selectTab(tab)" class="nav-item " > <a :class="{ 'active': tab.isActive }" class="nav-link" :href="tab.href" > {{ tab.tab_name }} </a> </li>    
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <slot></slot>
+                    </div>
+                </div>
+            </div>
+            `,
+            data() {
+                return {
+                    tabs: [],
+                }
+            },
+
+            created() {
+                this.tabs = this.$children;
+            },
+
+            methods: {
+                selectTab(selectedTab) {
+                    this.tabs.forEach(tab => {
+                        tab.isActive = (tab.tab_name === selectedTab.tab_name);
+                    });
+                }
+            },
+
+        });
+
+
+        Vue.component('login-tab', {
+            template: `
+            <div class="row" v-show="isActive">
+                <div class="col-12">
+                    <form action="#" method="post">
+                     
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" v-model="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" v-model="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="submit" class="btn btn-primary" value="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>  
+            `,
+
+            data() {
+                return {
+                    email: '',
+                    password: '',
+                    tab_name: 'Login Tab',
+                    isActive: false,
+                }
+            },
+
+            props: {
+                selected: {
+                    default: false
+                }
+            },
+
+            mounted() {
+                this.isActive = this.selected;
+            },
+            computed: {
+                href() {
+                    return '#' + this.tab_name.replace(/ /g, '-');
+                }
+            }
+        });
+
+        Vue.component('signup-tab', {
+            template: `
+            <div class="row" v-show="isActive">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" v-model="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" v-model="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" v-model="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Password Confirmation</label>
+                            <input type="password" name="password-confirmation" id="password-confirmation" class="form-control" v-model="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="submit" class="btn btn-primary" value="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            `,
+            data() {
+                return {
+                    name: '',
+                    email: '',
+                    password: '',
+                    tab_name: 'Sign Up',
+                    isActive: false,
+                }
+            },
+
+            props: {
+                selected: {
+                    default: false
+                },
+            },
+
+            mounted() {
+                this.isActive = this.selected;
+            },
+            computed: {
+                href() {
+                    return '#' + this.tab_name.replace(/ /g, '-');
+                }
+            }
+
+        })
+    </script>
+
+    <script>
+        var app = new Vue({
+            el: '#root',
+
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
