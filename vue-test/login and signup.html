@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="root" class="row justify-content-center">
+    <div id="root" class="row justify-content-center mx-0">
 
         <tabs>
             <login-tab></login-tab>
@@ -24,13 +24,13 @@
         Vue.component('tabs', {
             template: `
             <div class="row">
-                <div class="col-12">
-                    <ul class="nav nav-pills">
+                <div class="col-12 mt-5">
+                    <ul class="nav nav-pills row justify-content-center">
                         <li v-for="tab in tabs" @click="selectTab(tab)" class="nav-item " > <a :class="{ 'active': tab.isActive }" class="nav-link" :href="tab.href" > {{ tab.tab_name }} </a> </li>    
                     </ul>
                 </div>
 
-                <div class="row">
+                <div class="col-12">
                     <div class="col-12">
                         <slot></slot>
                     </div>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">Password Confirmation</label>
-                            <input type="password" name="password-confirmation" id="password-confirmation" class="form-control" v-model="password">
+                            <input type="password" name="password-confirmation" id="password-confirmation" class="form-control" v-model="password_confirmation">
                         </div>
                         <div class="form-group">
                             <button type="button" id="submit" class="btn btn-primary" value="submit">Save</button>
@@ -138,8 +138,9 @@
                     name: '',
                     email: '',
                     password: '',
-                    tab_name: 'Sign Up',
+                    tab_name: 'SignUp Tab',
                     isActive: false,
+                    password_confirmation: '',
                 }
             },
 
